@@ -3,4 +3,5 @@ diskpoint=$(diskutil list physical |head -n1 | awk -F "/"  '{print $3}' |awk '{p
 sn=$(ioreg -rd1 -c IOPlatformExpertDevice | awk -F'"' '/IOPlatformSerialNumber/{print $4}')
 echo current disk mount point is : $diskpoint
 echo SN\: $sn
+diskutil eject $diskpoint
 diskutil erasedisk APFS "Macintosh HD" $diskpoint
